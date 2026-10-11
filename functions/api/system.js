@@ -1,0 +1,2 @@
+import {json,getUser} from './_lib.js';
+export async function onRequestGet({request,env}){const user=await getUser(request,env);if(!user)return json({error:'Sesi tidak valid atau kedaluwarsa.'},401);return json({ok:true,message:'Backend aktif. Metrik CPU/RAM dan status DDoS belum tersedia sampai panel/telemetry nyata dihubungkan.',ddosStatus:'unknown',runtime:'Cloudflare Pages Functions',pterodactylConfigured:Boolean(env.PTERO_URL&&env.PTERO_APP_KEY)})}
